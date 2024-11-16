@@ -99,7 +99,7 @@ pub use metrics::*;
 
 use wasm_bindgen::prelude::*;
 #[wasm_bindgen]
-pub fn sort_results(candidates: Vec<String>, query: String) -> Vec<usize> {
+pub fn sort_results(candidates: Vec<String>, query: String) -> Box<[usize]> {
     console_error_panic_hook::set_once();
     use metrics::fzf::{FzfParser, FzfV2};
 
