@@ -76,30 +76,39 @@
 #![allow(clippy::module_inception)]
 #![allow(clippy::needless_range_loop)]
 #![allow(clippy::too_many_arguments)]
-#![deny(missing_docs)]
 #![deny(rustdoc::broken_intra_doc_links)]
 #![deny(rustdoc::private_intra_doc_links)]
 
 extern crate alloc;
 
-#[cfg(feature = "__any-metric")]
 mod candidate;
 mod case_sensitivity;
-#[cfg(feature = "__any-metric")]
 mod matched_ranges;
 mod metric;
-#[cfg(feature = "__any-metric")]
 mod metrics;
-#[cfg(feature = "__any-metric")]
 mod normalize;
-#[cfg(feature = "__any-metric")]
 mod utils;
 
-#[cfg(feature = "__any-metric")]
 use candidate::{Candidate, CandidateMatches};
 pub use case_sensitivity::CaseSensitivity;
-#[cfg(feature = "__any-metric")]
 use matched_ranges::MatchedRanges;
 pub use metric::Metric;
-#[cfg(feature = "__any-metric")]
 pub use metrics::*;
+
+use wasm_bindgen::prelude::*;
+#[wasm_bindgen]
+pub fn closest(candidates: Vec<String>, query: String) -> usize {
+    use metrics::fzf::{FzfParser, FzfV2};
+
+    let mut fzf = FzfV2::new();
+    let mut parser = FzfParser::new();
+    let query = parser.parse(&query);
+    let mut results = candidates.iter()
+    .cloned()
+    .enumerate()
+    .filter_map(|(index, candidate)| fzf.distance(query, &candidate).map(|dist| (index, dist)))
+    .collect::<Vec<_>>();
+
+    results.sort_by_key(|(_index, dist)| *dist);
+    return results[0].0;
+}
