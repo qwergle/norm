@@ -1,8 +1,5 @@
 {
   "name": "norm",
-  "collaborators": [
-    "Riccardo Mazzarini <me@noib3.dev>"
-  ],
   "description": "A collection of distance metrics on strings",
   "version": "0.1.1",
   "license": "MIT",
@@ -16,12 +13,5 @@
     "norm.d.ts"
   ],
   "browser": "norm.js",
-  "types": "norm.d.ts",
-  "keywords": [
-    "text",
-    "fuzzy",
-    "match",
-    "search",
-    "fzf"
-  ]
+  "types": "norm.d.ts"
 }
