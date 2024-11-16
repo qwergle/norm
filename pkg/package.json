@@ -1,0 +1,31 @@
+{
+  "name": "norm",
+  "type": "module",
+  "collaborators": [
+    "Riccardo Mazzarini <me@noib3.dev>"
+  ],
+  "description": "A collection of distance metrics on strings",
+  "version": "0.1.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nomad/norm"
+  },
+  "files": [
+    "norm_bg.wasm",
+    "norm.js",
+    "norm.d.ts"
+  ],
+  "main": "norm.js",
+  "types": "norm.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ],
+  "keywords": [
+    "text",
+    "fuzzy",
+    "match",
+    "search",
+    "fzf"
+  ]
+}
