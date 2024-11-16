@@ -129,7 +129,7 @@ function passArrayJsValueToWasm0(array, malloc) {
  * @param {string} query
  * @returns {number}
  */
-export function closest(candidates, query) {
+function closest(candidates, query) {
     const ptr0 = passArrayJsValueToWasm0(candidates, wasm.__wbindgen_malloc);
     const len0 = WASM_VECTOR_LEN;
     const ptr1 = passStringToWasm0(query, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
