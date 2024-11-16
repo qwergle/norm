@@ -79,6 +79,8 @@
 #![deny(rustdoc::broken_intra_doc_links)]
 #![deny(rustdoc::private_intra_doc_links)]
 
+extern crate console_error_panic_hook;
+use std::panic;
 extern crate alloc;
 
 mod candidate;
@@ -98,6 +100,7 @@ pub use metrics::*;
 use wasm_bindgen::prelude::*;
 #[wasm_bindgen]
 pub fn sort_results(candidates: Vec<String>, query: String) -> Vec<usize> {
+    console_error_panic_hook::set_once();
     use metrics::fzf::{FzfParser, FzfV2};
 
     let mut fzf = FzfV2::new();
