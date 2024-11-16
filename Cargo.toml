@@ -68,4 +68,4 @@ required-features = ["fzf-v2"]
 crate-type = ["cdylib"]
 
 [profile.dev]
-strip = true
+#strip = true
