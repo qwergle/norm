@@ -65,4 +65,7 @@ name = "cities"
 required-features = ["fzf-v2"]
 
 [lib]
-crate-type = ["cdylib", "rlib"]
+crate-type = ["cdylib"]
+
+[profile.dev]
+strip = true
