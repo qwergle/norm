@@ -99,13 +99,13 @@ pub use metrics::*;
 
 use wasm_bindgen::prelude::*;
 #[wasm_bindgen]
-pub fn sort_results(candidates: Vec<String>, query: String) -> Box<[usize]> {
+pub fn sort_results(candidates: Vec<String>, query: String) -> Vec<usize> {
     console_error_panic_hook::set_once();
     use metrics::fzf::{FzfParser, FzfV2};
 
     let mut fzf = FzfV2::new();
     let mut parser = FzfParser::new();
-    let query = parser.parse(&query);
+    let query = parser.parse(&(query.clone()));
     let mut results = candidates.iter()
     .cloned()
     .enumerate()
