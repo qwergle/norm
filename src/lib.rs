@@ -97,7 +97,7 @@ pub use metrics::*;
 
 use wasm_bindgen::prelude::*;
 #[wasm_bindgen]
-pub fn closest(candidates: Vec<String>, query: String) -> usize {
+pub fn sort_results(candidates: Vec<String>, query: String) -> Vec<usize> {
     use metrics::fzf::{FzfParser, FzfV2};
 
     let mut fzf = FzfV2::new();
@@ -110,5 +110,5 @@ pub fn closest(candidates: Vec<String>, query: String) -> usize {
     .collect::<Vec<_>>();
 
     results.sort_by_key(|(_index, dist)| *dist);
-    return results[0].0;
+    return results.into_iter().map(|(index, _candidate)| index).collect();
 }

@@ -4,9 +4,9 @@ declare namespace wasm_bindgen {
 	/**
 	 * @param {(string)[]} candidates
 	 * @param {string} query
-	 * @returns {number}
+	 * @returns {Uint32Array}
 	 */
-	export function closest(candidates: (string)[], query: string): number;
+	export function sort_results(candidates: (string)[], query: string): Uint32Array;
 	
 }
 
@@ -14,9 +14,11 @@ declare type InitInput = RequestInfo | URL | Response | BufferSource | WebAssemb
 
 declare interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly closest: (a: number, b: number, c: number, d: number) => number;
+  readonly sort_results: (a: number, b: number, c: number, d: number, e: number) => void;
   readonly __wbindgen_export_0: (a: number, b: number) => number;
   readonly __wbindgen_export_1: (a: number, b: number, c: number, d: number) => number;
+  readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
+  readonly __wbindgen_export_2: (a: number, b: number, c: number) => void;
 }
 
 /**
