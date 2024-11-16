@@ -1,6 +1,5 @@
 {
   "name": "norm",
-  "type": "module",
   "collaborators": [
     "Riccardo Mazzarini <me@noib3.dev>"
   ],
@@ -16,11 +15,8 @@
     "norm.js",
     "norm.d.ts"
   ],
-  "main": "norm.js",
+  "browser": "norm.js",
   "types": "norm.d.ts",
-  "sideEffects": [
-    "./snippets/*"
-  ],
   "keywords": [
     "text",
     "fuzzy",
